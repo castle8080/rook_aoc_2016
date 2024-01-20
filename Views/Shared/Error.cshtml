@@ -1,0 +1,19 @@
+﻿@model ErrorViewModel
+
+<div class="error-div">
+    <div class="error-message">
+        An error occurred: 
+        @if (Model.Exception != null) {
+            @Model.Exception.Message
+        } else {
+            @("Unknown")
+        }
+    </div>
+
+    @if (Model.Exception != null) {
+        <div class="error-stacktrace">
+            <u>Details:</u><br/>
+            <textarea rows="10" cols="100">@(Model.Exception.ToString())</textarea>
+        </div>
+    }
+</div>

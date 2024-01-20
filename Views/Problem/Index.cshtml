@@ -1,0 +1,24 @@
+@model rook_aoc_2016.Models.ProblemViewModel
+
+<div class="problem-div">
+    <h2>Advent of Code 2016 <a href='https://adventofcode.com/2016/day/@(Model.Day)' target='aoc_problem'>Day @(Model.Day)</a>.</h2>
+
+    <div class="problem-input-div">
+        <b>Input: </b><i>@(Model.InputName)</i>
+    </div>
+
+    @if (Model.Results != null) {
+        @foreach (var problemResult in Model.Results) {
+            <div class="problem-result-div">
+                <b>Part:</b> @(problemResult.Part)<br/>
+                <b>Time:</b> @(problemResult.ExecutionTime.TotalMilliseconds) milliseconds.<br/>
+                @if (problemResult.Answer != null) {
+                    <b>Answer:</b> @(problemResult.Answer)<br/>
+                }
+                @if (problemResult.Error != null) {
+                    <b>Error:</b> @(problemResult.Error)<br/>
+                }
+            </div>
+        }
+    }
+</div>

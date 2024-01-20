@@ -1,0 +1,37 @@
+
+#top-nav {
+    background-color: navy;
+    color: white;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#top-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+}
+  
+#problem-main {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+}
+
+#problem-choice-div {
+    display: inline;
+    padding-right: 20px;
+}
+
+#problem-choice-div ol {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 10px;
+}
+
+#problem-div {
+    display: inline;
+    padding-left: 10px;
+}

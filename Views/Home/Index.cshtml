@@ -1,0 +1,26 @@
+﻿@model rook_aoc_2016.Models.HomeViewModel
+
+<div id="top-nav">
+    <a href='https://adventofcode.com/2016' target="aoc_site">Advent of Code 2016</a>
+</div>
+
+<div id="problem-main">
+    <div id="problem-choice-div">
+        <ol>
+            @foreach (var problem in Model.Problems.Problems) {
+                <li>
+                    <a href='/problem/@(problem.Day)'
+                        hx-get='/problem/@(problem.Day)'
+                        hx-trigger="click"
+                        hx-target="#problem-div"
+                        hx-swap="innerHTML"
+                    >Day @(problem.Day)</a>
+                </li>
+            }
+        </ol>
+    </div>
+
+    <div id="problem-div">
+        Choose a problem to run!
+    </div>
+</div>

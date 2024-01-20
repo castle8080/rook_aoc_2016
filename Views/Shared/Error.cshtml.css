@@ -1,0 +1,9 @@
+
+.error-message {
+    color: darkred;
+    font-size: 1.5em;
+}
+
+.error-stacktrace {
+    padding-top: 10px;
+}
