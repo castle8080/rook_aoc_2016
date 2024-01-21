@@ -4,11 +4,14 @@ namespace rook_aoc_2016.Problems;
 using System.Diagnostics;
 using rook_aoc_2016.Services;
 
-public abstract class BaseProblem : IProblem {
-    public int Day { get; private set; }
+public abstract class BaseProblem<T> : IProblem {
+    public int Day { get; }
 
-    public BaseProblem(int day) {
+    public ILogger<T> Logger { get; }
+
+    public BaseProblem(int day, ILogger<T> logger) {
         Day = day;
+        Logger = logger;
     }
 
     public abstract Task<string> Part1(ProblemInput input);

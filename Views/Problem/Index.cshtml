@@ -1,10 +1,32 @@
 @model rook_aoc_2016.Models.ProblemViewModel
 
-<div class="problem-div">
+<div id="problem-div">
     <h2>Advent of Code 2016 <a href='https://adventofcode.com/2016/day/@(Model.Day)' target='aoc_problem'>Day @(Model.Day)</a>.</h2>
 
     <div class="problem-input-div">
-        <b>Input: </b><i>@(Model.InputName)</i>
+        <b>Input: </b>
+        <select
+            name="input"
+            hx-get="@(Model.GetDefaultURI())"
+            hx-target="#problem-div"
+            hx-swap="outerHTML"
+        >
+            @foreach (var inputName in Model.PossibleInputs) {
+                if (inputName == Model.InputName) {
+                    <option selected>@(inputName)</option>
+                }
+                else {
+                    <option>@(inputName)</option>
+                }
+            }
+        </select>
+        @if (Model.InputName != null) {
+            <a href='@(Model.GetReRunURI())'
+                hx-get="@(Model.GetReRunURI())"
+                hx-target="#problem-div"
+                hx-swap="outerHTML"
+            >Run Again</a>
+        }
     </div>
 
     @if (Model.Results != null) {
@@ -16,7 +38,9 @@
                     <b>Answer:</b> @(problemResult.Answer)<br/>
                 }
                 @if (problemResult.Error != null) {
-                    <b>Error:</b> @(problemResult.Error)<br/>
+                    <b>Error:</b> @(problemResult.Error.Message)<br/>
+                    <b>Stacktrace:</b><br/>
+                    <div class="problem-stacktrace">@(problemResult.Error.StackTrace)</div>
                 }
             </div>
         }

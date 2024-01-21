@@ -20,7 +20,6 @@ public class HomeController : Controller
     [Route("/")]
     public IActionResult Index()
     {
-        _logger.LogInformation($"Have problems: {_problems}");
         return View(new HomeViewModel(_problems));
     }
 }

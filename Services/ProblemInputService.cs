@@ -15,7 +15,7 @@ public class ProblemInputService {
     }
 
     public IList<ProblemInput> GetInputs(int day) {
-        return AllInputs().Where(i => i.Day == day).OrderBy(i => i.Name).ToList();
+        return AllInputs().Where(i => i.Day == day).OrderBy(i => Tuple.Create(i.Name.Length, i.Name)).ToList();
     }   
 
     public IEnumerable<ProblemInput> AllInputs() {

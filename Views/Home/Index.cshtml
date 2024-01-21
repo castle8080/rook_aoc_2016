@@ -12,7 +12,7 @@
                     <a href='/problem/@(problem.Day)'
                         hx-get='/problem/@(problem.Day)'
                         hx-trigger="click"
-                        hx-target="#problem-div"
+                        hx-target="#problem-div-container"
                         hx-swap="innerHTML"
                     >Day @(problem.Day)</a>
                 </li>
@@ -20,7 +20,7 @@
         </ol>
     </div>
 
-    <div id="problem-div">
+    <div id="problem-div-container">
         Choose a problem to run!
     </div>
 </div>

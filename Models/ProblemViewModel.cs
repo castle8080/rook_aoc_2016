@@ -8,5 +8,20 @@ public class ProblemViewModel
 
     public string? InputName { get; set; }
 
+    public IList<string> PossibleInputs { get; set; }
+
     public List<ProblemResult>? Results { get; set; }
+
+    public string GetDefaultURI() {
+        return $"/problem/{Day}";
+    }
+
+    public string GetReRunURI() {
+        if (InputName == null) {
+            return GetDefaultURI();
+        }
+        else {
+            return $"/problem/{Day}?input={Uri.EscapeDataString(InputName)}";
+        }
+    }
 }
