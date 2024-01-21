@@ -25,7 +25,10 @@
                 hx-get="@(Model.GetReRunURI())"
                 hx-target="#problem-div"
                 hx-swap="outerHTML"
-            >Run Again</a>
+            >[Run Again]</a>
+            <a href='@(Model.GetInputURI())'
+                target="problem-input"
+            >[See Input]</a>
         }
     </div>
 

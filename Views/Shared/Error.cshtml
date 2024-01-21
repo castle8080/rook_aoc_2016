@@ -2,7 +2,7 @@
 
 <div class="error-div">
     <div class="error-message">
-        An error occurred: 
+        Error:
         @if (Model.Exception != null) {
             @Model.Exception.Message
         } else {
@@ -11,9 +11,6 @@
     </div>
 
     @if (Model.Exception != null) {
-        <div class="error-stacktrace">
-            <u>Details:</u><br/>
-            <textarea rows="10" cols="100">@(Model.Exception.ToString())</textarea>
-        </div>
+        <div class="error-stacktrace">@(Model.Exception.ToString())</div>
     }
 </div>

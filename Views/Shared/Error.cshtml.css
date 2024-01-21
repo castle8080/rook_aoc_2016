@@ -1,9 +1,12 @@
 
 .error-message {
     color: darkred;
+    font-weight: bold;
     font-size: 1.5em;
+    text-decoration: underline;
 }
 
 .error-stacktrace {
     padding-top: 10px;
+    white-space: pre-wrap;
 }

@@ -12,6 +12,15 @@ public class ProblemViewModel
 
     public List<ProblemResult>? Results { get; set; }
 
+    public string? GetInputURI() {
+        if (InputName == null) {
+            return null;
+        }
+        else {
+            return $"/input/{Uri.EscapeUriString(InputName)}";
+        }
+    }
+
     public string GetDefaultURI() {
         return $"/problem/{Day}";
     }
