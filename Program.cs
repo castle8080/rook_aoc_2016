@@ -8,6 +8,7 @@ builder.Services.AddTransient<ProblemInputService>();
 builder.Services.AddTransient<ProblemService>();
 builder.Services.AddTransient<IProblem, Problem1>();
 builder.Services.AddTransient<IProblem, Problem2>();
+builder.Services.AddTransient<IProblem, Problem3>();
 
 builder.Services.AddControllersWithViews();
 
