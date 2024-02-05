@@ -2,6 +2,12 @@
 
 <div id="top-nav">
     <a href='https://adventofcode.com/2016' target="aoc_site">Advent of Code 2016</a>
+    <a href='/results/latest_accepted'
+        hx-get='/results/latest_accepted'
+        hx-trigger='click'
+        hx-target='#problem-div-container'
+        hx-swap='innerHTML'
+    >[Latest Results]</a>
 </div>
 
 <div id="problem-main">

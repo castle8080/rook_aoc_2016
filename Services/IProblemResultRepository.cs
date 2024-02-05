@@ -10,6 +10,8 @@ public interface IProblemResultRepository
 
     public Task<ProblemResult?> FindByIdAsync(string id);
 
+    public Task<IList<ProblemResult>> GetLatestAcceptedAsync();
+
     public Task UpdateAsync(ProblemResult problemResult);
 
     public Task SaveAsync(IList<ProblemResult> results);

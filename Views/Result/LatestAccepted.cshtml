@@ -1,0 +1,26 @@
+@model ProblemResultsViewModel
+
+<h2>Latest Accepted</h2>
+
+<table class='problem-results-table'>
+    <tbody>
+        <tr>
+            <th style='text-align: center;'>Year</th>
+            <th style='text-align: center'>Day</th>
+            <th style='text-align: center'>Part</th>
+            <th>Input</th>
+            <th style='text-align: right'>Result</th>
+            <th style='text-align: right'>Execution Time<br/>(seconds)</th>
+        </tr>
+        @foreach (var result in Model.Results) {
+            <tr>
+                <td style='text-align: center'>@(result.Year)</td>
+                <td style='text-align: center'>@(result.Day)</td>
+                <td style='text-align: center'>@(result.Part)</td>
+                <td>@(result.Input)</td>
+                <td style='text-align: right'>@(result.Result)</td>
+                <td style='text-align: right'>@(result.ExecutionTime)</td>
+            </tr>
+        }
+    </tbody>
+</table>

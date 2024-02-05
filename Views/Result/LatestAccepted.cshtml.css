@@ -1,0 +1,23 @@
+
+.problem-results-table {
+    border-width: 1px;
+    border-style: solid;
+    border-collapse: collapse;
+}
+
+.problem-results-table th {
+    padding-left: 8px;
+    padding-right: 8px;
+    vertical-align: top;
+    border-width: 1px;
+    border-style: solid;
+    border-collapse: collapse;
+}
+
+.problem-results-table td {
+    padding-left: 8px;
+    padding-right: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-collapse: collapse;
+}

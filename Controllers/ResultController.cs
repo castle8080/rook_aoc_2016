@@ -18,6 +18,13 @@ public class ResultController : Controller
         this._problemResultRepository = problemResultRepository;
     }
 
+    [Route("/results/latest_accepted")]
+    public async Task<IActionResult> LatestAccepted()
+    {
+        var results = await _problemResultRepository.GetLatestAcceptedAsync();
+        return PartialView(new ProblemResultsViewModel { Results = results });
+    }
+
     // $"/result/{Uri.EscapeDataString(r.Id)}/accepted";
     [Route("/result/{id}/accepted")]
     [HttpPost]
@@ -25,15 +32,36 @@ public class ResultController : Controller
     {
         _logger.LogInformation($"Updating: id={id} request={value}");
 
-        var problemResult = await _problemResultRepository.FindByIdAsync(id);
-        if (problemResult == null) {
+        try
+        {
+            var problemResult = await _problemResultRepository.FindByIdAsync(id);
+            if (problemResult == null) {
+                _logger.LogError($"Could not find result by id: {id}");
+
+                return PartialView("BasicMessage", new BasicMessageViewModel {
+                    Message = "Could not find result by id.",
+                    MessageType = BasicMessageType.Error
+                });
+            }
+            problemResult.Accepted = value;
+
+            await _problemResultRepository.UpdateAsync(problemResult);
+
             // Should return error view.
-            throw new Exception("Not found.");
+            return PartialView("BasicMessage", new BasicMessageViewModel {
+                Message = "Problem result accepted.",
+                MessageType = BasicMessageType.Success
+            });
         }
-        problemResult.Accepted = value;
-
-        await _problemResultRepository.UpdateAsync(problemResult);
-
-        return PartialView();
+        catch (Exception e)
+        {
+            _logger.LogError($"Error accepting result: {e}");
+            
+            // Should return error view.
+            return PartialView("BasicMessage", new BasicMessageViewModel {
+                Message = $"There was an error updating the problem result: {e.Message}",
+                MessageType = BasicMessageType.Error
+            });
+        }
     }
 }

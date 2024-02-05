@@ -8,7 +8,17 @@ body {
   margin: 0px;
 }
 
-.success-status-message {
+.status-message-success {
   color: darkgreen;
+  font-style: italic;
+}
+
+.status-message-warning {
+  color: darkorange;
+  font-style: italic;
+}
+
+.status-message-error {
+  color: darkred;
   font-style: italic;
 }
