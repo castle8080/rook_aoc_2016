@@ -1,6 +1,10 @@
 namespace rook_aoc_2016.Problems;
 
 public class ProblemResult {
+    public string Id { get;  }
+
+    public int Year {get; }
+
     public int Day { get; }
 
     public int Part { get; }
@@ -11,7 +15,9 @@ public class ProblemResult {
 
     public TimeSpan ExecutionTime { get; }
 
-    public ProblemResult(int day, int part, string answer, TimeSpan executionTime) {
+    public ProblemResult(string id, int year, int day, int part, string answer, TimeSpan executionTime) {
+        Id = id;
+        Year = year;
         Day = day;
         Part = part;
         Answer = answer;
@@ -19,7 +25,8 @@ public class ProblemResult {
         ExecutionTime = executionTime;
     }
 
-    public ProblemResult(int day, int part, Exception error, TimeSpan executionTime) {
+    public ProblemResult(string id, int year, int day, int part, Exception error, TimeSpan executionTime) {
+        Id = id;
         Day = day;
         Part = part;
         Answer = null;

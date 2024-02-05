@@ -7,7 +7,7 @@ using rook_aoc_2016.Services;
 namespace rook_aoc_2016.Problems;
 
 public class Problem3 : BaseProblem<Problem3> {
-    public Problem3(ILogger<Problem3> logger) : base(3, logger) { }
+    public Problem3(ILogger<Problem3> logger) : base(2016, 3, logger) { }
 
     private static Regex WHITESPACE_REGEX = new Regex(@"\s+");
 

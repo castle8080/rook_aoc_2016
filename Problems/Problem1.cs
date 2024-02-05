@@ -5,7 +5,7 @@ using rook_aoc_2016.Services;
 namespace rook_aoc_2016.Problems;
 
 public class Problem1 : BaseProblem<Problem1> {
-    public Problem1(ILogger<Problem1> logger) : base(1, logger) { }
+    public Problem1(ILogger<Problem1> logger) : base(2016, 1, logger) { }
 
     public enum Direction {
         North = 0,

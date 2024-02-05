@@ -7,3 +7,8 @@ html {
 body {
   margin: 0px;
 }
+
+.success-status-message {
+  color: darkgreen;
+  font-style: italic;
+}

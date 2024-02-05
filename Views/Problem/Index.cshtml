@@ -21,14 +21,16 @@
             }
         </select>
         @if (Model.InputName != null) {
-            <a href='@(Model.GetReRunURI())'
-                hx-get="@(Model.GetReRunURI())"
-                hx-target="#problem-div"
-                hx-swap="outerHTML"
-            >[Run Again]</a>
-            <a href='@(Model.GetInputURI())'
-                target="problem-input"
-            >[See Input]</a>
+            <p>
+                <a href='@(Model.GetReRunURI())'
+                    hx-get="@(Model.GetReRunURI())"
+                    hx-target="#problem-div"
+                    hx-swap="outerHTML"
+                >[Run Again]</a>
+                <a href='@(Model.GetInputURI())'
+                    target="problem-input"
+                >[See Input]</a>
+            </p>
         }
     </div>
 
@@ -39,6 +41,17 @@
                 <b>Time:</b> @(problemResult.ExecutionTime.TotalMilliseconds) milliseconds.<br/>
                 @if (problemResult.Answer != null) {
                     <b>Answer:</b> @(problemResult.Answer)<br/>
+                    <div class='problem-result-accept-div'>
+                        <form
+                            hx-post="@(Model.GetAcceptAnswerURI(problemResult))"
+                            hx-target="next .problem-result-accept-status"
+                            hx-swap="innerHTML"
+                        >
+                            <input type='hidden' name='value' value='1'></input>
+                            <input type='submit' value="Accept Answer"></input>
+                        </form>
+                        <div class="problem-result-accept-status"></div>
+                    </div>
                 }
                 @if (problemResult.Error != null) {
                     <b>Error:</b> @(problemResult.Error.Message)<br/>

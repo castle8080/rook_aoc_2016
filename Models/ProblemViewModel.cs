@@ -33,4 +33,8 @@ public class ProblemViewModel
             return $"/problem/{Day}?input={Uri.EscapeDataString(InputName)}";
         }
     }
+
+    public string GetAcceptAnswerURI(ProblemResult r) {
+        return $"/result/{Uri.EscapeDataString(r.Id)}/accepted";
+    }
 }

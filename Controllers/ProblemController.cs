@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using rook_aoc_2016.Models;
 using rook_aoc_2016.Services;
 
+using ProblemResultDB = rook_aoc_2016.Db.ProblemResult;
+
 namespace rook_aoc_2016.Controllers;
 
 public class ProblemController : Controller
@@ -11,11 +13,18 @@ public class ProblemController : Controller
     private readonly ProblemService _problems;
     private readonly ProblemInputService _inputService;
 
-    public ProblemController(ILogger<HomeController> logger, ProblemService problems, ProblemInputService inputService)
+    private readonly IProblemResultRepository _problemResultRepository;
+
+    public ProblemController(
+        ILogger<HomeController> logger,
+        ProblemService problems,
+        ProblemInputService inputService,
+        IProblemResultRepository problemResultRepository)
     {
         _logger = logger;
         _problems = problems;
         _inputService = inputService;
+        _problemResultRepository = problemResultRepository;
     }
 
     [Route("/problem/{day}")]
@@ -42,6 +51,9 @@ public class ProblemController : Controller
             }
 
             var results = await problem.ExecuteAsync(input);
+
+            // Save results in db
+            await _problemResultRepository.SaveAsync(results.Select(r => ProblemResultDB.From(r, input.Name)).ToList());
 
             return PartialView(new ProblemViewModel {
                 Day = day,

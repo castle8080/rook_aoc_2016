@@ -19,4 +19,14 @@
 .problem-stacktrace {
     white-space: pre-wrap;
     padding: 10px;
-  }
+}
+
+.problem-result-accept-div {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.problem-result-accept-status {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}

@@ -5,7 +5,7 @@ using rook_aoc_2016.Services;
 namespace rook_aoc_2016.Problems;
 
 public class Problem2 : BaseProblem<Problem2> {
-    public Problem2(ILogger<Problem2> logger) : base(2, logger) { }
+    public Problem2(ILogger<Problem2> logger) : base(2016, 2, logger) { }
 
     private static readonly char[][] KEY_PAD_1 = new [] {
         new [] {'1', '2', '3'},
